@@ -25,23 +25,23 @@ train_set_x = train_set_x_flatten / 255
 test_set_x = test_set_x_flatten / 255
 
 # %%构建不同学习率神经网络并测试
-# learning_rates = [0.01, 0.001, 0.0001]
-# modules = {}
-# for i in learning_rates:
-#     print("Learning rate is: " + str(i))
-#     modules[str(i)] = lf.module(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=2000, learning_rate = i)
-#     plt.plot(np.squeeze(modules[str(i)]["costs"]), label = str(modules[str(i)]["learning_rate"]))
-# plt.ylabel('cost')
-# plt.xlabel('iterations (per hundreds')
-# plt.legend()
-# plt.show()
-
-d = lf.module(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=2000, learning_rate=0.005)
-
-# %%成本函数图
-costs = np.squeeze(d["costs"])
-plt.plot(costs)
+learning_rates = [0.01, 0.001, 0.0001]
+modules = {}
+for i in learning_rates:
+    print("Learning rate is: " + str(i))
+    modules[str(i)] = lf.module(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=2000, learning_rate = i)
+    plt.plot(np.squeeze(modules[str(i)]["costs"]), label = str(modules[str(i)]["learning_rate"]))
 plt.ylabel('cost')
-plt.xlabel('iterations (per hundreds)')
-plt.title("Learning rate =" + str(d["learning_rate"]))
+plt.xlabel('iterations (per hundreds')
+plt.legend()
 plt.show()
+
+# d = lf.module(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=2000, learning_rate=0.005)
+#
+# # %%成本函数图
+# costs = np.squeeze(d["costs"])
+# plt.plot(costs)
+# plt.ylabel('cost')
+# plt.xlabel('iterations (per hundreds)')
+# plt.title("Learning rate =" + str(d["learning_rate"]))
+# plt.show()
