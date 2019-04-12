@@ -104,10 +104,10 @@ def update_parameters(parameters, grads, learning_rate):
     W1,b1,W2,b2 = parameters["W1"], parameters["b2"], parameters["W2"], parameters["b2"]
     dW1,db1,dW2,db2 = grads["dW1"], grads["db1"], grads["dW2"], grads["db2"]
 
-    W1 = W1 - dW1
-    b1 = b1 - db1
-    W2 = W2 - dW2
-    b2 = b2 - db2
+    W1 = W1 - dW1*learning_rate
+    b1 = b1 - db1*learning_rate
+    W2 = W2 - dW2*learning_rate
+    b2 = b2 - db2*learning_rate
 
     parameters = {
         "W1": W1,
