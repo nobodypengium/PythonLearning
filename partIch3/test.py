@@ -29,7 +29,7 @@ print("隐藏层节点数量：n_h = %d" % n_h)
 print("输出层节点数量：n_y = %d" % n_y)
 
 # %%测试初始化参量 initialize_parameters(n_x,n_h,n_y)
-parameters = initialize_parameters(n_x,n_h,n_y)
+parameters = initialize_parameters(n_x, n_h, n_y)
 print("W1 = ")
 print(str(parameters["W1"]))
 print("b1 = ")
@@ -39,4 +39,46 @@ print(str(parameters["W2"]))
 print("b2 = ")
 print(str(parameters["b2"]))
 
-# %%测试前向传播
+# %%测试前向传播 forward_propagation
+cache = forward_propagation(X, parameters)
+print("Z1 = ")
+print(str(cache["Z1"].shape))
+print("A1 = ")
+print(str(cache["A1"].shape))
+print("Z2 = ")
+print(str(cache["Z2"].shape))
+print("A2 = ")
+print(str(cache["A2"].shape))
+
+# %%测试成本函数 compute_cost(
+cost = compute_cost(cache["A2"], Y)
+print("cost = %f" % cost)
+
+# %%测试反向传播函数 backward_propagation
+grads = backward_propagation(parameters, cache, X, Y)
+print("dW1: " + str(grads["dW1"].shape))
+print("db1: " + str(grads["db1"].shape))
+print("dW2: " + str(grads["dW2"].shape))
+print("db2: " + str(grads["db2"].shape))
+
+# %%测试梯度下降 update_parameters
+parameters = update_parameters(parameters,grads,1.2)
+print("W1 = ")
+print(str(parameters["W1"]))
+print("b1 = ")
+print(str(parameters["b1"]))
+print("W2 = ")
+print(str(parameters["W2"]))
+print("b2 = ")
+print(str(parameters["b2"]))
+
+# %%测试神经网络 nn_model
+parameters = nn_model(X,Y,4,100,False)
+print("W1 = ")
+print(str(parameters["W1"]))
+print("b1 = ")
+print(str(parameters["b1"]))
+print("W2 = ")
+print(str(parameters["W2"]))
+print("b2 = ")
+print(str(parameters["b2"]))
