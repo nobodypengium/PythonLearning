@@ -34,3 +34,17 @@ for l in range(1, layers_dims.__len__()):
     print("W" + str(l) + ": " + str(parameters_deep["W" + str(l)].shape))
     print("b" + str(l) + ": " + str(parameters_deep["b" + str(l)].shape))
 
+# %% 测试前向传播
+AL, caches = L_model_forward(train_set_x, parameters_deep) #这里直接从documentation里读各个矩阵大小
+
+# %% 测试成本函数
+cost = compute_cost(AL, train_set_y)
+print("cost: {0:g}".format(cost))
+
+# %% 测试反向传播
+grads = L_model_backward(AL,train_set_y,caches) #直接从documentation里看
+
+# %% 测试更新参数
+parameters = update_parameters(parameters,grads,learning_rate=0.01)
+
+
