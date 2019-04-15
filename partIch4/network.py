@@ -37,6 +37,7 @@ def initialize_parameters_deep(layers_dims):  # layers_dims秩为1数组，layer
     return parameters
 
 
+
 # %% 前向传播
 # ·线性部分：针对每一层计算Z
 # ·激活部分：针对每一层，对Z应用激活函数
@@ -94,7 +95,7 @@ def linear_backward(dZ, cache):
     m = A_prev.shape[1]
 
     dW = np.dot(dZ, A_prev.T) / m
-    db = np.sum(dZ, axis=1, keepdims=True)
+    db = np.sum(dZ, axis=1, keepdims=True) / m
     dA_prev = np.dot(W.T, dZ)
 
     return dA_prev, dW, db
@@ -121,7 +122,7 @@ def L_model_backward(AL, Y, caches):
 
     dAL = -(np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
     current_cache = caches[L - 1]  # 秩为1的数组从0数
-    grads["dA" + str(L)], grads["dW" + str(L)], grads["db", str(L)] = linear_activation_backward(dAL, current_cache,
+    grads["dA" + str(L)], grads["dW" + str(L)], grads["db" + str(L)] = linear_activation_backward(dAL, current_cache,
                                                                                                  "sigmoid")
 
     for l in reversed(range(L - 1)):
@@ -133,14 +134,46 @@ def L_model_backward(AL, Y, caches):
         grads["db" + str(l + 1)] = db_temp
 
     return grads
+
+
 # %% 更新参数
-def update_parameters(parameters,grads,learning_rate):
+def update_parameters(parameters, grads, learning_rate):
     L = len(parameters) // 2
 
-    for l in  range(L):
-        parameters["W"+str(l+1)] = parameters["W"+str(l+1)]-learning_rate*grads["dW"+str(l+1)]
-        parameters["b"+str(l+1)] = parameters["b"+str(l+1)]-learning_rate*grads["db"+str(l+1)]
+    for l in range(L):
+        parameters["W" + str(l + 1)] = parameters["W" + str(l + 1)] - learning_rate * grads["dW" + str(l + 1)]
+        parameters["b" + str(l + 1)] = parameters["b" + str(l + 1)] - learning_rate * grads["db" + str(l + 1)]
 
     return parameters
 
+
 # %%整合神经网络
+def two_layer_model(X, Y, layers_dims, learning_rate=0.075, num_iterations=3000, print_cost=False, isPlot=True):
+    np.random.seed(1)
+    grads = {}
+    costs = []
+    (n_x, n_h, n_y) = layers_dims
+
+    parameters = initialize_parameters(n_x, n_h, n_y)
+
+    W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
+
+
+    for i in range(num_iterations):
+        AL,caches = L_model_forward(X, parameters)  #前向传播
+        cost = compute_cost(AL, Y)  #计算成本
+        grads = L_model_backward(AL,Y,caches) #后向传播
+        parameters = update_parameters(parameters,grads,learning_rate) #更新参数
+        if i % 100 == 0:
+            costs.append(cost)
+            if print_cost:
+                print("第{0:d}次的迭代成本值为{1:g}".format(i,cost))
+
+    if isPlot:
+        plt.plot(np.squeeze(costs))
+        plt.ylabel("cost")
+        plt.xlabel("iterations (per hundred")
+        plt.title("Learning rage = " + str(learning_rate))
+        plt.show()
+
+    return parameters
