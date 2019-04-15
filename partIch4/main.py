@@ -18,9 +18,21 @@ n_x = train_set_x.shape[0]
 n_y = train_set_y.shape[0]
 
 np.random.seed(1)
-layer_dims = [n_x, 7, 1]
+layer_dims = [n_x, 20, 7, 5, 1]
 
 # %%两层网络
-parameters = two_layer_model(train_set_x,train_set_y,layer_dims,learning_rate=0.0075,num_iterations=2500,print_cost=True,isPlot=True)
+# parameters = two_layer_model(train_set_x,train_set_y,layer_dims,learning_rate=0.0075,num_iterations=2500,print_cost=True,isPlot=True)
 
 # %%多层网络
+parameters = L_layer_model(train_set_x, train_set_y, layer_dims, learning_rate=0.0075, num_iterations=2500, print_cost=True, isPlot=True)
+
+# %%预测
+print("=====训练集=====")
+train_set_y_predict = predict(train_set_x,train_set_y,parameters)
+print("=====测试集=====")
+test_set_y_predict = predict(test_set_x,test_set_y,parameters)
+
+# %% 错误标记的图片
+#print_mislabeled_images(classes,test_set_x,test_set_y,test_set_y_predict)
+
+# %%自己的图片

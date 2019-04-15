@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import partIch4.testCases
 from partIch4.dnn_utils import *
 import partIch4.lr_utils
+from PIL import Image
 
 
 # %% 初始化两层网络
@@ -148,6 +149,7 @@ def update_parameters(parameters, grads, learning_rate):
 
 
 # %%整合神经网络
+# 两层神经网络
 def two_layer_model(X, Y, layers_dims, learning_rate=0.075, num_iterations=3000, print_cost=False, isPlot=True):
     np.random.seed(1)
     grads = {}
@@ -177,3 +179,78 @@ def two_layer_model(X, Y, layers_dims, learning_rate=0.075, num_iterations=3000,
         plt.show()
 
     return parameters
+
+#深层神经网络
+def L_layer_model(X,Y,layers_dims, learning_rate = 0.0075, num_iterations = 3000, print_cost = False, isPlot=True):
+    np.random.seed(1)
+    costs = []
+
+    parameters = initialize_parameters_deep(layers_dims) #初始化变量
+
+    for i in range(num_iterations):
+        AL, caches = L_model_forward(X,parameters) #前向传播
+        cost = compute_cost(AL,Y) #计算参数
+        grads = L_model_backward(AL,Y,caches) #计算梯度
+        parameters = update_parameters(parameters,grads,learning_rate) #新的参数
+        if i % 100 == 0:
+            costs.append(cost)
+            if(print_cost):
+                print("第{0:d}次迭代的成本函数是：{1:g}".format(i, cost))
+
+    if isPlot:
+        plt.plot(np.squeeze(costs))
+        plt.ylabel("cost")
+        plt.xlabel("iterations (per hundred)")
+        plt.title("Learning rate = " + str(learning_rate))
+
+    return parameters
+
+# %% 预测
+def predict(X,Y,parameters):
+    m = X.shape[1]
+    n = len(parameters) // 2
+    Y_prediction= np.zeros((1,m))
+
+    AL, cache = L_model_forward(X,parameters)
+
+    for i in range (0,AL.shape[1]):
+        if AL[0,i] > 0.5:
+            Y_prediction[0,i] = 1
+
+    print("准确度为：" + str((1 - np.sum(np.abs(Y - AL))/m)*100) + "%")
+
+    return Y_prediction
+
+# %%分析错误标记
+def print_mislabeled_images(classes,X,Y,P):
+    A = P + Y
+    mislabeled_indices = np.asarray(np.where(A == 1))
+    plt.rcParams['figure.figsize'] = (40.0, 40.0)
+
+    num_images = len(mislabeled_indices[0])
+    for i in range(num_images):
+        index = mislabeled_indices[1][i]
+
+        plt.subplot(4,num_images/2,i + 1) #一共几行，一共几列，第几个图
+        plt.imshow(X[:,index].reshape(64,64,3), interpolation='nearest')
+        plt.axis('off')
+        plt.title("Prediction: \n" + classes[int(P[0,index])].decode("utf-8") + "\nClass: \n" + classes[int(Y[0,index])].decode("utf-8"))
+
+# %%判断某个自己的图片是不是猫
+
+def predict_my_image(path,parameters):
+    image = Image.open(path).convert("RGB").resize((64,64))
+    image_arr = np.array(image)
+    image_arr = image_arr.reshape(-1,1)
+    AL,cache = L_model_forward(image_arr, parameters)
+
+    prob = np.squeeze(AL)
+
+    if prob >= 0.5:
+        image_predict = 1
+        print("这是猫图"+str(prob))
+    else:
+        image_predict = 0
+        print("这并不是猫图"+str(prob))
+
+    return image_predict
