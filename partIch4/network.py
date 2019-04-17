@@ -224,7 +224,7 @@ def predict(X,Y,parameters):
 # %%分析错误标记
 def print_mislabeled_images(classes,X,Y,P):
     A = P + Y
-    mislabeled_indices = np.asarray(np.where(A == 1))
+    mislabeled_indices = np.asarray(np.where(A == 1)) #第index个图片是错误标记的
     plt.rcParams['figure.figsize'] = (40.0, 40.0)
 
     num_images = len(mislabeled_indices[0])
@@ -232,7 +232,7 @@ def print_mislabeled_images(classes,X,Y,P):
         index = mislabeled_indices[1][i]
 
         plt.subplot(4,num_images/2,i + 1) #一共几行，一共几列，第几个图
-        plt.imshow(X[:,index].reshape(64,64,3), interpolation='nearest')
+        plt.imshow(X[:,index].reshape(64,64,3), interpolation='nearest')#显示某一张图片
         plt.axis('off')
         plt.title("Prediction: \n" + classes[int(P[0,index])].decode("utf-8") + "\nClass: \n" + classes[int(Y[0,index])].decode("utf-8"))
 
