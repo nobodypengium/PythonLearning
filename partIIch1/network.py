@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import sklearn
 import sklearn.datasets
 import partIIch1.init_utils as init_utils
-import partIIch1.reg_utils as reg_util
-import partIIch1.gc_utils as gc_util
+import partIIch1.reg_utils as reg_utils
+import partIIch1.gc_utils as gc_utils
 
 
 def initialize_parameters_zeros(layers_dims):
@@ -107,3 +107,31 @@ def model(X, Y, learning_rate=0.01, num_iterations=15000, print_cost=True, initi
                 print("第" + str(i) + "次迭代的成本是" + str(cost))
 
     return parameters, costs
+
+def model_reg(X,Y,learning_rate=0.3,num_iteration=30000,print_cost=True,lambd=0,keep_prob=1):
+    """
+    用于测试是否正则化对方差（过拟合与否）的影响
+    :param X:
+    :param Y:
+    :param learning_rate:
+    :param num_iteration:
+    :param print_cost:
+    :param lambd:
+    :param keep_prob:
+    :return:
+    """
+    # 缓存变量
+    grads={}
+    costs=[]
+    m = X.shape[1]
+    layers_dims = [X.shape[0],20,3,1]
+
+    # 初始化参数
+    parameters = reg_utils.initialize_parameters() # 参数被除了适用于tanh的标准差
+
+    for i in range(0,num_iteration):
+        # 前向传播
+        if keep_prob == 1:
+            AL, cache = reg_utils.forward_propagation(X,parameters)
+        elif keep_prob<1:
+            AL, cache = reg_utils.forward_propagation()
