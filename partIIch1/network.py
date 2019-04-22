@@ -127,11 +127,44 @@ def model_reg(X,Y,learning_rate=0.3,num_iteration=30000,print_cost=True,lambd=0,
     layers_dims = [X.shape[0],20,3,1]
 
     # 初始化参数
-    parameters = reg_utils.initialize_parameters() # 参数被除了适用于tanh的标准差
+    parameters = reg_utils.initialize_parameters(layers_dims) # 参数被除了适用于tanh的标准差
 
     for i in range(0,num_iteration):
         # 前向传播
+        ## 是否随机丢弃节点
         if keep_prob == 1:
             AL, cache = reg_utils.forward_propagation(X,parameters)
         elif keep_prob<1:
-            AL, cache = reg_utils.forward_propagation()
+            AL, cache = reg_utils.forward_propagation_with_dropout(X,parameters,keep_prob=keep_prob)
+        else:
+            print("keep_prob参数错误！程序退出。")
+            exit
+
+        # 计算成本
+        ## 是否使用二范数,随机丢弃节点的计算成本没有意义
+        if lambd == 0:
+            cost = reg_utils.compute_cost(AL,Y)
+        else:
+            cost = reg_utils.compute_cost_with_regularization(AL,Y,parameters,lambd)
+
+        # 反向传播
+        if(lambd == 0 and keep_prob == 1):#不正则化
+            grads = reg_utils.backward_propagation(X,Y,cache)
+        elif(lambd!=0 and keep_prob ==1):#L2正则化
+            grads = reg_utils.backward_propagation_with_regulation(X,Y,cache,lambd)
+        elif(lambd == 0 and keep_prob!=1):#随机丢弃节点正则化
+            grads = reg_utils.backward_propagation_with_dropout(X,Y,cache,keep_prob)
+        else:
+            print("没写两个都开的函数...")
+            exit
+
+        # 更新参数
+        parameters = reg_utils.update_parameters(parameters,grads,learning_rate)
+
+        #记录成本函数
+        if i%1000 == 0:
+            costs.append(cost)
+            if (print_cost and i % 10000 == 0):
+                print("第"+str(i)+"次迭代的成本是："+str(cost))
+
+    return costs,parameters

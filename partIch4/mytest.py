@@ -11,7 +11,7 @@ f = open("parameters.pkl", 'rb')
 parameters = pickle.load(f)
 image = Image.open("cat.jpg").convert("RGB").resize((64,64))
 image_arr = np.array(image) / 255
-image_arr = image_arr.reshape(-1,1)
+image_arr = image_arr.reshape(-1, 1)
 AL,cache = L_model_forward(image_arr, parameters)
 
 prob = np.squeeze(AL)
