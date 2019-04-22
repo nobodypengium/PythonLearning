@@ -92,5 +92,27 @@ def backward_propagation(X, Y, cache):
 
     return grads
 
-#参数看起来比一维的多了因为有些是用于前向传播和反向传播的
-def gradient_check_n(parameters,X,Y,epsilon=1e-7):
+def gradient_check_n(parameters,gradients, X,Y,epsilon=1e-7):
+    """
+    高维网络的梯度计算检测
+    :param parameters: 参数，双边误差公式的一部分
+    :param gradients: 用导数算出来的梯度，用来比较
+    :param X:
+    :param Y:
+    :param epsilon: 阈值
+    :return:
+    """
+
+    parameters_values, keys = gc_utils.dictionary_to_vector(parameters) #将参数转化为向量(-1,1)的一列向量
+    grad = gc_utils.gradients_to_vector(gradients)
+
+    # 初始化参数，所有向量维度保持一致
+    num_parameters = parameters_values.shape[0]
+    J_plus = np.zeros((num_parameters,1))
+    J_minus = np.zeros((num_parameters,1))
+    gradapprox = np.zeros((num_parameters,1)) #用来和grad比较
+
+    # 计算gradapprox，这里要注意，只能一个参数一个参数地来，“控制变量”
+    for i in range(num_parameters):
+        theta_plus = np.copy(parameters_values) #深拷贝，改变不影响原始数据
+        theta_plus[i]
