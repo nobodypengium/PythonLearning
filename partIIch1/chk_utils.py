@@ -2,6 +2,7 @@ import numpy as np
 import partIIch1.gc_utils as gc_utils
 
 
+
 # %% 一维线性测试
 ## 通过前向传播，进行双边检测
 ## 求导数
@@ -66,7 +67,7 @@ def forward_propagation_n(X, Y, parameters):
     return cost, cache
 
 
-def backward_propagation(X, Y, cache):
+def backward_propagation_n(X, Y, cache):
     m = X.shape[1]
     (Z1, A1, W1, b1, Z2, A2, W2, b2, Z3, A3, W3, b3) = cache
 
@@ -114,5 +115,23 @@ def gradient_check_n(parameters,gradients, X,Y,epsilon=1e-7):
 
     # 计算gradapprox，这里要注意，只能一个参数一个参数地来，“控制变量”
     for i in range(num_parameters):
-        theta_plus = np.copy(parameters_values) #深拷贝，改变不影响原始数据
-        theta_plus[i]
+        thetaplus = np.copy(parameters_values) #深拷贝，改变不影响原始数据
+        thetaplus[i][0] = thetaplus[i][0] + epsilon
+        J_plus[i],cache = forward_propagation_n(X,Y,gc_utils.vector_to_dictionary(thetaplus))
+
+        thetaminus = np.copy(parameters_values)
+        thetaminus[i][0] = thetaminus[i][0] + epsilon
+        J_minus[i],cache = forward_propagation_n(X,Y,gc_utils.vector_to_dictionary(thetaminus))
+
+        gradapprox[i] = (J_plus[i]-J_minus[i])/(2*epsilon)
+
+    numerator = np.linalg.norm(grad - gradapprox)
+    denominator = np.linalg.norm(grad) + np.linalg.norm(gradapprox)
+    difference = numerator / denominator
+
+    if difference < 1e-7:
+        print("梯度正常")
+    else:
+        print("梯度超出阈值")
+
+    return  difference
