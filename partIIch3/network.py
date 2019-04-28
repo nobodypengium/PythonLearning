@@ -1,6 +1,6 @@
 import numpy as np
 import h5py
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.python.framework import ops
 import partIIch3.tf_utils as tf_utils
@@ -119,7 +119,7 @@ def model(X_train, Y_train, X_test, Y_test, learning_rate=0.0001, num_epochs=150
     # 计算成本
     cost = compute_cost(Z3, Y)
 
-    # 反向传播
+    # 反向传播（生成一个优化器）
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
     # 初始化变量
@@ -134,3 +134,34 @@ def model(X_train, Y_train, X_test, Y_test, learning_rate=0.0001, num_epochs=150
             epoch_cost = 0
             num_minibatches = int(m / minibatch_size)
             seed = seed + 1
+            minibatches = tf_utils.random_mini_batches(X_train,Y_train,minibatch_size,seed) #分割小批量
+
+            for minibatch in minibatches:
+                (minibatch_X, minibatch_Y) = minibatch #这是诶个小批量中需要被喂给网络的数据,将被喂给占位符
+                _,minibatch_cost = sess.run([optimizer,cost],feed_dict={X:minibatch_X,Y:minibatch_Y}) #把minibatch_X和minibatch_Y分别喂给对应的占位符
+                epoch_cost = epoch_cost + minibatch_cost / num_minibatches #每一代输出一个总的成本，针对这一代的
+
+            if epoch % 5 == 0:
+                costs.append(epoch_cost)
+                if print_cost and epoch % 100 == 0:
+                    print("epoch = " + str(epoch) + "epoch_cost = " + str(epoch_cost))
+
+        if is_plot:
+            plt.plot(np.squeeze(costs))
+            plt.ylabel("cost")
+            plt.xlabel("iteration (per_tens)")
+            plt.title("Learning rate")
+
+        parameters = sess.run(parameters)
+        print("参数已保存到session")
+
+        #这里定义了两种运算方式，实际上后面才运行
+        correct_prediction = tf.equal(tf.argmax(Z3),tf.argmax(Y)) #tf.argmax返回最大值所在索引
+        accuracy = tf.reduce_mean(tf.cast(correct_prediction,"float")) #tf.cast()数值类型转换
+
+        print("训练集的准确率：", accuracy.eval({X:X_train,Y:Y_train}))
+        print("测试集的准确率：", accuracy.eval({X:X_test,Y:Y_test}))
+
+        return parameters
+
+
