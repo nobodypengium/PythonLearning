@@ -48,7 +48,7 @@ def random_mini_batches(X, Y, mini_batch_size = 64, seed = 0):
         mini_batches.append(mini_batch)
     return mini_batches
 def convert_to_one_hot(Y, C):
-    Y = np.eye(C)[Y.reshape(-1)].T
+    Y = np.eye(C)[Y.reshape(-1)].T #取出eye的第x列
     return Y
 def forward_propagation_for_predict(X, parameters):
     """
