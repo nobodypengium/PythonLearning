@@ -174,7 +174,7 @@ def ResNet50(input_shape=(64,64,3),classes=6):
     #第六部分:AVGPOOL -> FC -> Softmax
     X = AveragePooling2D(pool_size=(2,2),padding="same")(X)
     X = Flatten()(X)
-    X = Dense(classes,activation="softmax",name="fc"+str(classes),kernel_initializer=glorot_uniform(seed=0))(X)
+    X = Dense(classes,activation="softmax",name="fc"+str(classes),kernel_initializer=glorot_uniform(seed=0))(X)#
 
     model = Model(inputs=X_input,outputs=X,name="ResNet50")
 
