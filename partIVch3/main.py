@@ -16,3 +16,56 @@ from partIVch3.yad2k.models.keras_yolo import yolo_head, yolo_boxes_to_corners, 
 
 import partIVch3.yolo_utils as yolo_utils
 
+from partIVch3.network import *
+
+def predict(sess, image_file, is_show_info=True, is_plot=True):
+    """
+    运行sess中的计算图来预测image_file的边框，打印出预测的图与信息
+    :param sess:会话，包含计算图
+    :param image_file:图像名称
+    :param is_show_info:
+    :param is_plot:
+    :return:
+    """
+
+    # 图像预处理
+    image, image_data = yolo_utils.preprocess_image("images/" + image_file, model_image_size=(608, 608))
+
+    # 运行会话
+    out_scores, out_boxes, out_classes = sess.run([scores, boxes, classes],
+                                                  feed_dict={yolo_model.input: image_data, K.learning_phase(): 0})
+
+    #预测信息
+    if is_show_info:
+        print("在" + str(image_file) + "中找到了" + str(len(out_boxes)) + "个锚框")
+
+    #边框颜色
+    colors = yolo_utils.generate_colors(class_names)
+
+    #绘制边框
+    yolo_utils.draw_boxes(image,out_scores,out_boxes,out_classes,class_names,colors)
+
+    #保存绘制了边界的图
+    image.save(os.path.join("out",image_file),quality=100)
+
+    #打印绘制了边界的图
+    if is_plot:
+        output_image = scipy.misc.imread(os.path.join("out",image_file))
+        plt.imshow(output_image)
+
+    return out_scores, out_boxes, out_classes
+
+
+with tf.Session() as sess:
+    class_names = yolo_utils.read_classes("model_data/coco_classes.txt")
+    anchors = yolo_utils.read_anchors("model_data/yolo_anchors.txt")
+    image_shape = (720., 1280.)
+
+    yolo_model = load_model("model_data/yolov2.h5")
+    # yolo_model.summary()
+
+    yolo_outputs = yolo_head(yolo_model.output, anchors, len(class_names))
+    scores, boxes, classes = yolo_eval(yolo_outputs, image_shape)
+    out_scores, out_boxes, out_classes = predict(sess, "test.jpg")
+
+    sess.close()
