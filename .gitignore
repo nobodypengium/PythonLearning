@@ -13,3 +13,7 @@
 /partIVch4/images/
 /partIVch4/output/
 /partIVch4/pretrained-model/
+/partIVch4_1/images/
+/partIVch4_1/datasets/
+/partIVch4_1/weights/
+/partIVch4_1/nn4.small2.v7.h5
