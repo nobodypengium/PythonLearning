@@ -66,6 +66,16 @@ with tf.Session() as sess:
 
     yolo_outputs = yolo_head(yolo_model.output, anchors, len(class_names))
     scores, boxes, classes = yolo_eval(yolo_outputs, image_shape)
-    out_scores, out_boxes, out_classes = predict(sess, "test.jpg")
+    # out_scores, out_boxes, out_classes = predict(sess, "test.jpg")
+
+    for i in range(1,121):
+        #获取文件名
+        filename = str(i).zfill(4) + ".jpg"
+        print("当前文件：" + str(filename))
+
+        # 开始绘制，不打印信息，不绘制图
+        out_scores, out_boxes, out_classes = predict(sess, filename, is_show_info=False, is_plot=False)
+
+    print("绘制完成！")
 
     sess.close()
