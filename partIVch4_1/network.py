@@ -99,3 +99,17 @@ def who_is_it(image_path,database,model):
 
     #2.找到最相近的编码
     min_dist = 100 #设置min_dist为足够大的数字
+    for (name,db_enc) in database.items():
+        dist = np.linalg.norm(encoding-db_enc)#计算两图片编码差距
+        if dist<min_dist:
+            min_dist = dist
+            identity = name
+
+    #不在库中
+    if min_dist>0.7:
+        print("不在库中")
+    else:
+        print("姓名" + str(identity) + "差距" + str(min_dist))
+
+    return  min_dist,identity
+
