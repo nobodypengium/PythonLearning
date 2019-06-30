@@ -4,7 +4,6 @@
     <list default="true" id="59585607-6a0a-456e-859c-02b4bd1a8a84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/partIVch4/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/partIVch4/network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partIVch4/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/partIVch4/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="266">
+              <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -49,9 +48,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/partIVch4/nst_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="186" column="21" lean-forward="true" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partIVch4/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
+            <state relative-caret-position="280">
               <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
             </state>
           </provider>
@@ -151,8 +159,8 @@
         <option value="$PROJECT_DIR$/partIVch4_1/verify.py" />
         <option value="$PROJECT_DIR$/partIVch4_1/fr_utils.py" />
         <option value="$PROJECT_DIR$/partIVch4_1/network.py" />
-        <option value="$PROJECT_DIR$/partIVch4/network.py" />
         <option value="$PROJECT_DIR$/partIVch4/test.py" />
+        <option value="$PROJECT_DIR$/partIVch4/network.py" />
       </list>
     </option>
   </component>
@@ -220,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.network">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="PythonLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,20 +273,17 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="network" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PythonLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/partIVch3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/partIVch4" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/partIVch3/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/partIVch4/network.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -332,6 +337,9 @@
       <module name="PythonLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/partIVch4_1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -348,19 +356,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main (2)" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.test (2)" />
       <item itemvalue="Python.verify" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.network" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.network" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.verify" />
         <item itemvalue="Python.test (2)" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.main (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -444,7 +452,8 @@
       <workItem from="1561782808626" duration="120000" />
       <workItem from="1561813192786" duration="3343000" />
       <workItem from="1561857052317" duration="7409000" />
-      <workItem from="1561878385204" duration="7399000" />
+      <workItem from="1561878385204" duration="7660000" />
+      <workItem from="1561891399803" duration="6939000" />
     </task>
     <task id="LOCAL-00001" summary="Update PartI ch3">
       <created>1554969396946</created>
@@ -768,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561879343845</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Update PartIV ch4 1">
+      <created>1561887449197</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1561887449197</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308779000" />
+    <option name="totallyTimeSpent" value="315979000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -787,8 +803,8 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.39864865" visible="true" weight="0.20495646" />
-      <window_info id="Structure" order="1" sideWeight="0.6013514" side_tool="true" visible="true" weight="0.20495646" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3963964" visible="true" weight="0.20763563" />
+      <window_info id="Structure" order="1" sideWeight="0.6036036" side_tool="true" visible="true" weight="0.20763563" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.23174816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -807,9 +823,9 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.509009" visible="true" weight="0.24313463" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.5067568" visible="true" weight="0.24313463" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.49545455" weight="0.32953784" />
-      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.490991" side_tool="true" visible="true" weight="0.24313463" />
+      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.49324325" side_tool="true" visible="true" weight="0.24313463" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -949,7 +965,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/tensorflow/python/framework/op_def_library.py" />
     <entry file="file://$PROJECT_DIR$/partIIch3/datasets/network.py" />
     <entry file="file://$PROJECT_DIR$/partIIch3/learntf.py" />
     <entry file="file://$PROJECT_DIR$/partIIch3/datasets/main.py" />
@@ -1312,23 +1327,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/partIVch4/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4/main.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="266">
+          <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partIVch4/test.py">
+    <entry file="file://$PROJECT_DIR$/partIVch4/nst_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state relative-caret-position="247">
+          <caret line="186" column="21" lean-forward="true" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="21" />
         </state>
       </provider>
     </entry>
