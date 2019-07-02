@@ -54,7 +54,7 @@ def rnn_forward(x, a0, parameters):
     n_y, n_a = parameters["Wya"].shape
 
     # 初始化a和y为0
-    a = np.zeros(n_a, m, T_x)
+    a = np.zeros([n_a, m, T_x])
     y_pred = np.zeros([n_y, m, T_x])
 
     # 初始化a_next，为输入第一个时间步的激活值
@@ -66,15 +66,101 @@ def rnn_forward(x, a0, parameters):
         a_next, yt_pred, cache = rnn_cell_forward(x[:, :, t], a_next, parameters)
 
         # 保存a_next
-        a[:, :, t] = a_next
+        a[:, :, t] = a_next  # a0并不存在这里面
 
         # 保存预测值
         y_pred[:, :, t] = yt_pred
 
         # 保存cache
         caches.append(cache)
-    
+
+    # 保存反向传播所需参数
+    caches = (caches, x)
+
+    return a, y_pred, caches
+
+
+def lstm_cell_forward(xt, a_prev, c_prev, parameters):
+    """
+    构建单个LSTM单元
+    :param xt: 当前时间步的输入
+    :param a_prev: 前一个时间步的激活值
+    :param c_prev: 前一个时间步的记忆细胞值
+    :param parameters: W和b的参数
+    :return: a_next:下一个隐藏状态 c_next:下一个记忆状态 yt_pred:在t时间的预测 cache:反向传播需要的参数包括a_next,c_next,a_prev,c_prev,x_t,parameters
+    """
+
+    # 取出参数
+    Wf = parameters["Wf"]
+    bf = parameters["bf"]
+    Wi = parameters["Wi"]
+    bi = parameters["bi"]
+    Wc = parameters["Wc"]
+    bc = parameters["bc"]
+    Wo = parameters["Wo"]
+    bo = parameters["bo"]
+    Wy = parameters["Wy"]
+    by = parameters["by"]
+
+    # 获取维度信息
+    n_x, m = xt.shape
+    n_y, n_a = Wy.shape
+
+    # 连接a_prev和x_t
+    contact = np.zeros([n_a + n_x, m])
+    contact[:n_a, :] = a_prev
+    contact[n_a:, :] = xt
+
+    # 计算遗忘门ft更新门it更新单元cct输出门ot
+    ft = rnn_utils.sigmoid(np.dot(Wf, contact) + bf)
+    it = rnn_utils.sigmoid(np.dot(Wi, contact) + bi)
+    cct = np.tanh(np.dot(Wc, contact) + bc)
+    c_next = ft * c_prev + it * cct
+    ot = rnn_utils.sigmoid(np.dot(Wo, contact) + bo)
+    a_next = ot * np.tanh(c_next)
+    yt_pred = rnn_utils.softmax(np.dot(Wy, a_next) + by)
+    cache = (a_next, c_next, a_prev, c_prev, ft, it, cct, ot, xt, parameters)
+
+    return a_next, c_next, yt_pred, cache
+
+
+def lstm_forward(x, a0, parameters):
+    """
+    把LSTM模块连接起来，构成LSTM网络
+    :param x: 所有时间步的输入 (n_x,m,T_x)
+    :param a0: 初始化隐藏状态 (n_a,m)
+    :param parameters:所有参数Wb
+    :return:a:所有时间步的激活值 y:所有时间步的预测值 caches:反向传播所需信息
+    """
+
+    # 初始化caches
+    caches = []
+
+    # 获取xt与Wy维度信息，从最少的变量中获取到全部维度信息
+    n_x, m, T_x = x.shape
+    n_y, n_a = parameters["Wy"].shape
+
+    #用0初始化所有输出值，根据上面获取到的维度，先填0
+    a = np.zeros([n_a,m,T_x])
+    c = np.zeros([n_a,m,T_x])
+    y = np.zeros([n_y,m,T_x])
+
+    #初始化a_next和c_next
+    a_next = a0
+    c_next = np.zeros([n_a,m])
+
+    #一个一个时间步的网络走
+    for t in range(T_x):
+        #用刚才写的模块更新隐藏值、记忆状态、预测值和cache
+        a_next,c_next,yt_pred,cache = lstm_cell_forward(x[:,:,t],a_next,c_next,parameters)
+
+        #保存各种变量，这时候初始化的作用就体现出来了
+        a[:,:,t]=a_next
+        y[:,:,t]=yt_pred
+        c[:,:,t]=c_next
+        caches.append(cache)
+
     #保存反向传播所需参数
     caches = (caches,x)
 
-    return a,y_pred,caches
+    return a,y,c,caches
