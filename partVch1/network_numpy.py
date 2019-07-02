@@ -164,3 +164,40 @@ def lstm_forward(x, a0, parameters):
     caches = (caches,x)
 
     return a,y,c,caches
+
+def rnn_cell_backward(da_next,cache):
+    """
+    实现反向传播，rnn经常用到的tanh(x)的倒数是1-tanh^2
+    反向传播过程：计算d参数>通过d参数更新参数
+    用到了哪些变量，只有a吗?
+    :param da_next: 下一隐藏状态的损失函数
+    :param cache: 前向传播的输出，用于反向传播
+    :return:梯度
+    """
+    # 从cache中读取反向传播需要的值，注意这里是单步的
+    a_next,a_prev,xt,parameters = cache
+
+    #从parameters中获取参数
+    Wax = parameters["Wax"]
+    Waa = parameters["Waa"]
+    Wya = parameters["Wya"]
+    ba = parameters["ba"]
+    by = parameters["by"]
+
+    #dtanh(u)/du = (1-tanh(u)^2)du u=da_next 其中 a_next = Waxx<t>+Waaa<t-1>+b
+    dtanh = (1-np.square(a_next)) * da_next
+
+    #Wax的梯度
+    dxt = np.dot(Wax.T,dtanh)
+    dWax = np.dot(dtanh,xt.T)
+
+    #Waa的梯度
+    da_prev = np.dot(Waa.T,dtanh)
+    dWaa = np.dot(dtanh,a_prev.T)
+
+    #b的梯度
+    dba = np.sum(dtanh, keepdims=True, axis=1)
+
+    #保存提u自定
+    gradients = {"dxt": dxt, "da_prev": da_prev, "dWax": dWax, "dWaa": dWaa, "dba": dba}
+    return gradients

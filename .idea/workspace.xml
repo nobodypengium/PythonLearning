@@ -4,7 +4,6 @@
     <list default="true" id="59585607-6a0a-456e-859c-02b4bd1a8a84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/partVch1/network_numpy.py" beforeDir="false" afterPath="$PROJECT_DIR$/partVch1/network_numpy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partVch1/test_numpy.py" beforeDir="false" afterPath="$PROJECT_DIR$/partVch1/test_numpy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="2109">
               <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/partVch1/network_numpy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="165" column="23" lean-forward="true" selection-start-line="165" selection-start-column="23" selection-end-line="165" selection-end-column="23" />
+            <state relative-caret-position="356">
+              <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -67,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partVch1/test_numpy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+            <state relative-caret-position="1539">
+              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -339,6 +338,9 @@
       <module name="PythonLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/partVch1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -477,14 +479,8 @@
       <workItem from="1561891399803" duration="8361000" />
       <workItem from="1562053882173" duration="5244000" />
       <workItem from="1562065901328" duration="330000" />
-      <workItem from="1562066685190" duration="8677000" />
-    </task>
-    <task id="LOCAL-00002" summary="Update PartI ch3">
-      <created>1555072647704</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1555072647704</updated>
+      <workItem from="1562066685190" duration="8724000" />
+      <workItem from="1562076497368" duration="1835000" />
     </task>
     <task id="LOCAL-00003" summary="Update PartI ch3 - network">
       <created>1555074072011</created>
@@ -822,11 +818,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562059075326</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Update PartV ch1">
+      <created>1562075652139</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1562075652142</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331652000" />
+    <option name="totallyTimeSpent" value="333534000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -841,8 +844,8 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.38963965" visible="true" weight="0.21567315" />
-      <window_info id="Structure" order="1" sideWeight="0.6103604" side_tool="true" visible="true" weight="0.21567315" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3873874" visible="true" weight="0.21835232" />
+      <window_info id="Structure" order="1" sideWeight="0.6126126" side_tool="true" visible="true" weight="0.21835232" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.23174816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -861,9 +864,9 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.24313463" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49774775" visible="true" weight="0.24313463" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.49545455" weight="0.32953784" />
-      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" side_tool="true" visible="true" weight="0.24313463" />
+      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.5022523" side_tool="true" visible="true" weight="0.24313463" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1377,9 +1380,16 @@
     <entry file="file://$PROJECT_DIR$/partIVch4/main.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/1419675880/numpy/random/mtrand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39515">
+          <caret line="2323" column="4" selection-start-line="2323" selection-start-column="4" selection-end-line="2323" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="2109">
           <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -1394,24 +1404,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/1419675880/numpy/random/mtrand.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39515">
-          <caret line="2323" column="4" selection-start-line="2323" selection-start-column="4" selection-end-line="2323" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/partVch1/test_numpy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+        <state relative-caret-position="1539">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/partVch1/network_numpy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="165" column="23" lean-forward="true" selection-start-line="165" selection-start-column="23" selection-end-line="165" selection-end-column="23" />
+        <state relative-caret-position="356">
+          <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
