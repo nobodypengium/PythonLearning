@@ -140,32 +140,33 @@ def lstm_forward(x, a0, parameters):
     n_x, m, T_x = x.shape
     n_y, n_a = parameters["Wy"].shape
 
-    #用0初始化所有输出值，根据上面获取到的维度，先填0
-    a = np.zeros([n_a,m,T_x])
-    c = np.zeros([n_a,m,T_x])
-    y = np.zeros([n_y,m,T_x])
+    # 用0初始化所有输出值，根据上面获取到的维度，先填0
+    a = np.zeros([n_a, m, T_x])
+    c = np.zeros([n_a, m, T_x])
+    y = np.zeros([n_y, m, T_x])
 
-    #初始化a_next和c_next
+    # 初始化a_next和c_next
     a_next = a0
-    c_next = np.zeros([n_a,m])
+    c_next = np.zeros([n_a, m])
 
-    #一个一个时间步的网络走
+    # 一个一个时间步的网络走
     for t in range(T_x):
-        #用刚才写的模块更新隐藏值、记忆状态、预测值和cache
-        a_next,c_next,yt_pred,cache = lstm_cell_forward(x[:,:,t],a_next,c_next,parameters)
+        # 用刚才写的模块更新隐藏值、记忆状态、预测值和cache
+        a_next, c_next, yt_pred, cache = lstm_cell_forward(x[:, :, t], a_next, c_next, parameters)
 
-        #保存各种变量，这时候初始化的作用就体现出来了
-        a[:,:,t]=a_next
-        y[:,:,t]=yt_pred
-        c[:,:,t]=c_next
+        # 保存各种变量，这时候初始化的作用就体现出来了
+        a[:, :, t] = a_next
+        y[:, :, t] = yt_pred
+        c[:, :, t] = c_next
         caches.append(cache)
 
-    #保存反向传播所需参数
-    caches = (caches,x)
+    # 保存反向传播所需参数
+    caches = (caches, x)
 
-    return a,y,c,caches
+    return a, y, c, caches
 
-def rnn_cell_backward(da_next,cache):
+
+def rnn_cell_backward(da_next, cache):
     """
     实现反向传播，rnn经常用到的tanh(x)的倒数是1-tanh^2
     反向传播过程：计算d参数>通过d参数更新参数
@@ -175,29 +176,64 @@ def rnn_cell_backward(da_next,cache):
     :return:梯度
     """
     # 从cache中读取反向传播需要的值，注意这里是单步的
-    a_next,a_prev,xt,parameters = cache
+    a_next, a_prev, xt, parameters = cache
 
-    #从parameters中获取参数
+    # 从parameters中获取参数
     Wax = parameters["Wax"]
     Waa = parameters["Waa"]
     Wya = parameters["Wya"]
     ba = parameters["ba"]
     by = parameters["by"]
 
-    #dtanh(u)/du = (1-tanh(u)^2)du u=da_next 其中 a_next = Waxx<t>+Waaa<t-1>+b
-    dtanh = (1-np.square(a_next)) * da_next
+    # dtanh(u)/du = (1-tanh(u)^2)du u=da_next 其中 a_next = Waxx<t>+Waaa<t-1>+b
+    dtanh = (1 - np.square(a_next)) * da_next
 
-    #Wax的梯度
-    dxt = np.dot(Wax.T,dtanh)
-    dWax = np.dot(dtanh,xt.T)
+    # Wax的梯度
+    dxt = np.dot(Wax.T, dtanh)
+    dWax = np.dot(dtanh, xt.T)
 
-    #Waa的梯度
-    da_prev = np.dot(Waa.T,dtanh)
-    dWaa = np.dot(dtanh,a_prev.T)
+    # Waa的梯度
+    da_prev = np.dot(Waa.T, dtanh)
+    dWaa = np.dot(dtanh, a_prev.T)
 
-    #b的梯度
+    # b的梯度
     dba = np.sum(dtanh, keepdims=True, axis=1)
 
-    #保存提u自定
+    # 保存提u自定
     gradients = {"dxt": dxt, "da_prev": da_prev, "dWax": dWax, "dWaa": dWaa, "dba": dba}
     return gradients
+
+
+def rnn_backward(da, caches):
+    """
+    在整个输入序列上实现RNN反向传播
+    :param da: 所有隐藏状态的梯度
+    :param caches: 包含前向传播路给反向传播的信息
+    :return: gradients:
+    dx - 输入数据的梯度 (n_x,m,T_x)
+    da0 - 初始化隐藏状态的梯度 (n_a,m)
+    dWax - 权重的梯度 (n_a,n_x)
+    dWaa - 隐藏状态权值的梯度 (n_a, n_a)
+    dba - 偏置的梯度 (n_a,1)
+    """
+    # 获取时间步t=1时候的值
+    caches, x = caches
+    a1, a0, x1, parameters = caches[0]
+
+    # 获取维度信息
+    n_a, m, T_x = da.shape
+    n_x, m = x1.shape
+
+    #初始化梯度
+    dx = np.zeros([n_x,m,T_x])
+    dWax = np.zeros([n_a,n_x])
+    dWaa = np.zeros([n_a,n_a])
+    dba = np.zeros([n_a,1])
+    da0 = np.zeros([n_a,m])
+    da_prevt = np.zeros([n_a,m])
+
+    #处理所有时间步
+    for t in reversed(range(T_x)):
+        #计算时间步t时的梯度
+        gradients = rnn_cell_backward(da[:,:,t] + da_prevt,caches[t])
+
