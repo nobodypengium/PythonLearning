@@ -207,7 +207,7 @@ def rnn_cell_backward(da_next, cache):
 def rnn_backward(da, caches):
     """
     在整个输入序列上实现RNN反向传播
-    :param da: 所有隐藏状态的梯度
+    :param da: 所有隐藏状态的梯度,dJ/da忽略掉成本函数的定义这里
     :param caches: 包含前向传播路给反向传播的信息
     :return: gradients:
     dx - 输入数据的梯度 (n_x,m,T_x)

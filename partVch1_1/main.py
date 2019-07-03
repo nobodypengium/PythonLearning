@@ -13,6 +13,9 @@ chars = list(set(data))
 char_to_ix = {ch:i for i, ch in enumerate(sorted(chars))}
 ix_to_char = {i:ch for i,ch in enumerate(sorted(chars))}
 
+# 获取大小信息
+data_size, vocab_size = len(data), len(chars)
+
 np.random.seed(3)
 dWax = np.random.randn(5,3)*10
 dWaa = np.random.randn(5,5)*10
@@ -26,3 +29,4 @@ print("gradients[\"dWax\"][3][1] =", gradients["dWax"][3][1])
 print("gradients[\"dWya\"][1][2] =", gradients["dWya"][1][2])
 print("gradients[\"db\"][4] =", gradients["db"][4])
 print("gradients[\"dby\"][1] =", gradients["dby"][1])
+

@@ -60,3 +60,49 @@ def sample(parameters, char_to_ix, seed):
 
         #从y中取出索引并替换x
         idx = np.random.choice(list(range(vocab_size)),p=y.ravel())
+        indices.append(idx)
+
+        #创建独热编码
+        x = np.zeros((vocab_size,1))
+        x[idx] = 1
+
+        #更新a_prev
+        a_prev=a
+
+        #累加
+        seed += 1
+        counter += 1
+
+    if(counter == 50):
+        indices.append(char_to_ix["\n"])
+
+    return indices
+
+def optimize(X,Y,a_prev,parameters,learning_rate=0.01):
+    """
+    前向传播 -> 反向传播 -> 修剪梯度 ->更新参数 一次优化一个样本
+    :param X: 整数列表，映射到词汇表中的【字符】
+    :param Y: 整数列表，比x向左移动一个索引，因为前一层的输出y作后一层的输入x
+    :param a_prev: 上一层的隐藏状态
+    :param parameters: W和b的字典
+    :param learning_rate: 学习率
+    :return:
+    loss:损失
+    gradients 参数和变量的梯度
+    a[len(X)-1]最后的隐藏状态
+    """
+
+    #前向传播
+    loss, cache = cllm_utils.rnn_forward(X,Y,a_prev,parameters)
+
+    #反向传播
+    gradients, a = cllm_utils.rnn_backward(X,Y,parameters,cache)
+
+    #梯度修剪
+    gradients = clip(gradients,5)
+
+    #更新参数
+    parameters = cllm_utils.update_parameters(parameters,gradients,learning_rate)
+
+    return loss,gradients,a[len(X)-1]
+
