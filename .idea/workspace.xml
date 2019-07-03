@@ -34,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2109">
+            <state relative-caret-position="209">
               <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -46,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partIVch4/nst_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1327">
+            <state relative-caret-position="266">
               <caret line="187" column="34" selection-start-line="187" selection-start-column="34" selection-end-line="187" selection-end-column="34" />
             </state>
           </provider>
@@ -54,23 +54,25 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partVch1/rnn_utils.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2603" />
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partVch1/cllm_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="-1102">
               <caret line="52" selection-start-line="52" selection-end-line="62" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partVch1/network_numpy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-440">
-              <caret line="188" column="38" lean-forward="true" selection-start-line="188" selection-start-column="38" selection-end-line="188" selection-end-column="45" />
+            <state relative-caret-position="356">
+              <caret line="402" column="20" selection-start-line="402" selection-start-column="20" selection-end-line="402" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -78,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/partVch1/test_numpy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+            <state relative-caret-position="280">
+              <caret line="177" selection-start-line="177" selection-end-line="177" />
             </state>
           </provider>
         </entry>
@@ -493,14 +495,9 @@
       <workItem from="1562065901328" duration="330000" />
       <workItem from="1562066685190" duration="8724000" />
       <workItem from="1562076497368" duration="1869000" />
-      <workItem from="1562117814633" duration="6307000" />
-    </task>
-    <task id="LOCAL-00004" summary="Update PartI ch4">
-      <created>1555124367517</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1555124367517</updated>
+      <workItem from="1562117814633" duration="6325000" />
+      <workItem from="1562137747853" duration="1951000" />
+      <workItem from="1562151031888" duration="5456000" />
     </task>
     <task id="LOCAL-00005" summary="Update PartI ch4">
       <created>1555124426074</created>
@@ -838,11 +835,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562078805584</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Update PartV ch1">
+      <created>1562125729177</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1562125729178</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="339875000" />
+    <option name="totallyTimeSpent" value="347300000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -857,8 +861,8 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.38613862" visible="true" weight="0.22103149" />
-      <window_info id="Structure" order="1" sideWeight="0.6138614" side_tool="true" visible="true" weight="0.22103149" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3828829" visible="true" weight="0.22638983" />
+      <window_info id="Structure" order="1" sideWeight="0.6171171" side_tool="true" visible="true" weight="0.22638983" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.23174816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -872,14 +876,14 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50368387" side_tool="true" weight="0.37482318" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4996651" weight="0.3281471" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49631613" weight="0.37199435" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49631613" visible="true" weight="0.37199435" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49646392" visible="true" weight="0.24313463" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.490991" visible="true" weight="0.24313463" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.49545455" weight="0.32953784" />
-      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.50353605" side_tool="true" visible="true" weight="0.24313463" />
+      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.509009" side_tool="true" visible="true" weight="0.24313463" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1382,7 +1386,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2109">
+        <state relative-caret-position="209">
           <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -1392,35 +1396,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4/nst_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1327">
+        <state relative-caret-position="266">
           <caret line="187" column="34" selection-start-line="187" selection-start-column="34" selection-end-line="187" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/partVch1/rnn_utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2603" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/partVch1/cllm_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="-1102">
           <caret line="52" selection-start-line="52" selection-end-line="62" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partVch1/test_numpy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/partVch1/network_numpy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
-          <caret line="188" column="38" lean-forward="true" selection-start-line="188" selection-start-column="38" selection-end-line="188" selection-end-column="45" />
+        <state relative-caret-position="356">
+          <caret line="402" column="20" selection-start-line="402" selection-start-column="20" selection-end-line="402" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch1/test_numpy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="177" selection-start-line="177" selection-end-line="177" />
         </state>
       </provider>
     </entry>

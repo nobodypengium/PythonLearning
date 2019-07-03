@@ -224,16 +224,180 @@ def rnn_backward(da, caches):
     n_a, m, T_x = da.shape
     n_x, m = x1.shape
 
-    #初始化梯度
-    dx = np.zeros([n_x,m,T_x])
-    dWax = np.zeros([n_a,n_x])
-    dWaa = np.zeros([n_a,n_a])
-    dba = np.zeros([n_a,1])
-    da0 = np.zeros([n_a,m])
-    da_prevt = np.zeros([n_a,m])
+    # 初始化梯度
+    dx = np.zeros([n_x, m, T_x])
+    dWax = np.zeros([n_a, n_x])
+    dWaa = np.zeros([n_a, n_a])
+    dba = np.zeros([n_a, 1])
+    da0 = np.zeros([n_a, m])
+    da_prevt = np.zeros([n_a, m])
 
-    #处理所有时间步
+    # 处理所有时间步
     for t in reversed(range(T_x)):
-        #计算时间步t时的梯度
-        gradients = rnn_cell_backward(da[:,:,t] + da_prevt,caches[t])
+        # 计算时间步t时的梯度
+        gradients = rnn_cell_backward(da[:, :, t] + da_prevt, caches[t])
 
+        # 获取梯度
+        dxt, da_prevt, dWaxt, dWaat, dbat = gradients["dxt"], gradients["da_prev"], gradients["dWax"], gradients[
+            "dWaa"], gradients["dba"]
+
+        # 累加到全局，因为在RNN中所有时间步共享一套参数
+        dx[:, :, t] = dxt
+        dWax += dWaxt
+        dWaa += dWaat
+        dba += dbat
+
+    # 通过所有时间步反向传播过的a的梯度
+    da0 = da_prevt
+
+    # 保存所有参数到字典
+    gradients = {"dx": dx, "da0": da0, "dWax": dWax, "dWaa": dWaa, "dba": dba}
+
+    return gradients
+
+
+def lstm_cell_backward(da_next, dc_next, cache):
+    """
+    LSTM单个时间步的反向传播
+    :param da_next: 下一隐藏状态的梯度
+    :param dc_next: 下一记忆单元的梯度
+    :param cache: 前向传播对反向传播有用的信息
+    :return: 梯度字典，包含变量梯度与参数梯度
+    """
+    #获取来自前向传播的信息
+    (a_next, c_next, a_prev, c_prev, ft, it, cct, ot, xt, parameters) = cache
+
+    #获取维度信息，以便创建用于存储的零向量
+    n_x, m = xt.shape
+    n_a, m = a_next.shape
+
+    #计算门的梯度
+    dot = da_next * np.tanh(c_next) * ot * (1 - ot)
+    dcct = (dc_next * it + ot * (1 - np.square(np.tanh(c_next))) * it * da_next) * (1 - np.square(cct))
+    dit = (dc_next * cct + ot * (1 - np.square(np.tanh(c_next))) * cct * da_next) * it * (1 - it)
+    dft = (dc_next * c_prev + ot * (1 - np.square(np.tanh(c_next))) * c_prev * da_next) * ft * (1 - ft)
+
+    #计算参数的导数
+    concat = np.concatenate((a_prev, xt), axis=0).T
+    dWf = np.dot(dft, concat)
+    dWi = np.dot(dit, concat)
+    dWc = np.dot(dcct, concat)
+    dWo = np.dot(dot, concat)
+    dbf = np.sum(dft, axis=1, keepdims=True)
+    dbi = np.sum(dit, axis=1, keepdims=True)
+    dbc = np.sum(dcct, axis=1, keepdims=True)
+    dbo = np.sum(dot, axis=1, keepdims=True)
+
+    #计算先前隐藏状态、记忆状态、输入导数
+    da_prev = np.dot(parameters["Wf"][:, :n_a].T, dft) + np.dot(parameters["Wc"][:, :n_a].T, dcct) + np.dot(
+        parameters["Wi"][:, :n_a].T, dit) + np.dot(parameters["Wo"][:, :n_a].T, dot)
+    dc_prev = dc_next * ft + ot * (1 - np.square(np.tanh(c_next))) * ft * da_next
+    dxt = np.dot(parameters["Wf"][:, n_a:].T, dft) + np.dot(parameters["Wc"][:, n_a:].T, dcct) + np.dot(
+        parameters["Wi"][:, n_a:].T, dit) + np.dot(parameters["Wo"][:, n_a:].T, dot)
+
+    #保存梯度到字典
+    gradients = {"dxt": dxt, "da_prev": da_prev, "dc_prev": dc_prev, "dWf": dWf, "dbf": dbf, "dWi": dWi, "dbi": dbi,
+                 "dWc": dWc, "dbc": dbc, "dWo": dWo, "dbo": dbo}
+
+    return gradients
+
+def lstm_backward(da,caches):
+    """
+    lstm网络的反向传播
+    :param da: 隐藏状态的梯度
+    :param caches: 前向传播的信息
+    :return: gradients:返回梯度信息
+    """
+
+    # #获取t=1的值用来得到维度，得到维度用来初始0梯度
+    # caches, x = caches
+    # (a1, c1, a0, c0, f1, i1, cc1, o1, x1, parameters) = caches[0]
+    #
+    # #获取da和x1的维度信息
+    # n_a,m,T_x = da.shape
+    # n_x,m = x1.shape
+    #
+    # #初始化梯度
+    # dx = np.zeros([n_x,m,T_x])
+    # da0 = np.zeros([n_a,m])
+    # da_prevt = np.zeros([n_a, m])
+    # dc_prevt = np.zeros([n_a, m])
+    # dWf = np.zeros([n_a, n_a + n_x])
+    # dWi = np.zeros([n_a, n_a + n_x])
+    # dWc = np.zeros([n_a, n_a + n_x])
+    # dWo = np.zeros([n_a, n_a + n_x])
+    # dbf = np.zeros([n_a, 1])
+    # dbi = np.zeros([n_a, 1])
+    # dbc = np.zeros([n_a, 1])
+    # dbo = np.zeros([n_a, 1])
+    #
+    # # 处理所有时间步
+    # for t in reversed(range(T_x)):
+    #     # 使用lstm_cell_backward函数计算所有梯度
+    #     gradients = lstm_cell_backward(da[:, :, t], dc_prevt, caches[t])
+    #     # 保存相关参数
+    #     dx[:, :, t] = gradients['dxt']
+    #     dWf = dWf + gradients['dWf']
+    #     dWi = dWi + gradients['dWi']
+    #     dWc = dWc + gradients['dWc']
+    #     dWo = dWo + gradients['dWo']
+    #     dbf = dbf + gradients['dbf']
+    #     dbi = dbi + gradients['dbi']
+    #     dbc = dbc + gradients['dbc']
+    #     dbo = dbo + gradients['dbo']
+    # # 将第一个激活的梯度设置为反向传播的梯度da_prev。
+    # da0 = gradients['da_prev']
+    #
+    # # 保存所有梯度到字典变量内
+    # gradients = {"dx": dx, "da0": da0, "dWf": dWf, "dbf": dbf, "dWi": dWi, "dbi": dbi,
+    #              "dWc": dWc, "dbc": dbc, "dWo": dWo, "dbo": dbo}
+    #
+    # return gradients
+
+    # Retrieve values from the first cache (t=1) of caches.
+    (caches, x) = caches
+    (a1, c1, a0, c0, f1, i1, cc1, o1, x1, parameters) = caches[0]
+
+    ### START CODE HERE ###
+    # Retrieve dimensions from da's and x1's shapes (≈2 lines)
+    n_a, m, T_x = da.shape
+    n_x, m = x1.shape
+
+    # initialize the gradients with the right sizes (≈12 lines)
+    dx = np.zeros((n_x, m, T_x))
+    da0 = np.zeros((n_a, m))
+    da_prevt = np.zeros((n_a, m))
+    dc_prevt = np.zeros((n_a, m))
+    dWf = np.zeros((n_a, n_a + n_x))
+    dWi = np.zeros((n_a, n_a + n_x))
+    dWc = np.zeros((n_a, n_a + n_x))
+    dWo = np.zeros((n_a, n_a + n_x))
+    dbf = np.zeros((n_a, 1))
+    dbi = np.zeros((n_a, 1))
+    dbc = np.zeros((n_a, 1))
+    dbo = np.zeros((n_a, 1))
+
+    # loop back over the whole sequence
+    for t in reversed(range(T_x)):
+        # Compute all gradients using lstm_cell_backward
+        gradients = lstm_cell_backward(da[:, :, t] + da_prevt, dc_prevt, caches[t])
+        # Store or add the gradient to the parameters' previous step's gradient
+        dx[:, :, t] = gradients['dxt']
+        dWf = dWf + gradients['dWf']
+        dWi = dWi + gradients['dWi']
+        dWc = dWc + gradients['dWc']
+        dWo = dWo + gradients['dWo']
+        dbf = dbf + gradients['dbf']
+        dbi = dbi + gradients['dbi']
+        dbc = dbc + gradients['dbc']
+        dbo = dbo + gradients['dbo']
+    # Set the first activation's gradient to the backpropagated gradient da_prev.
+    da0 = gradients['da_prev']
+
+    ### END CODE HERE ###
+
+    # Store the gradients in a python dictionary
+    gradients = {"dx": dx, "da0": da0, "dWf": dWf, "dbf": dbf, "dWi": dWi, "dbi": dbi,
+                 "dWc": dWc, "dbc": dbc, "dWo": dWo, "dbo": dbo}
+
+    return gradients
