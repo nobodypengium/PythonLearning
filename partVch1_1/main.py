@@ -16,17 +16,9 @@ ix_to_char = {i:ch for i,ch in enumerate(sorted(chars))}
 # 获取大小信息
 data_size, vocab_size = len(data), len(chars)
 
-np.random.seed(3)
-dWax = np.random.randn(5,3)*10
-dWaa = np.random.randn(5,5)*10
-dWya = np.random.randn(2,5)*10
-db = np.random.randn(5,1)*10
-dby = np.random.randn(2,1)*10
-gradients = {"dWax": dWax, "dWaa": dWaa, "dWya": dWya, "db": db, "dby": dby}
-gradients = clip(gradients, 10)
-print("gradients[\"dWaa\"][1][2] =", gradients["dWaa"][1][2])
-print("gradients[\"dWax\"][3][1] =", gradients["dWax"][3][1])
-print("gradients[\"dWya\"][1][2] =", gradients["dWya"][1][2])
-print("gradients[\"db\"][4] =", gradients["db"][4])
-print("gradients[\"dby\"][1] =", gradients["dby"][1])
-
+#训练并获取生成的恐龙名字
+start_time = time.clock()
+parameters = model(data,ix_to_char,char_to_ix,num_iterations=3500)
+end_time = time.clock()
+minimum = end_time - start_time
+print("执行了：" + str(int(minimum/60)) + "分" + str(int(minimum%60)) + "秒")
