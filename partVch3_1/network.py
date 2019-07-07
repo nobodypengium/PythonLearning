@@ -55,3 +55,44 @@ def model(input_shape):
     model = Model(inputs=X_input, outputs=X)
 
     return model
+
+Tx = 5511  # 频谱图模型输入时间步
+n_freq = 101  # 频谱图模型频率数
+model = load_model('./models/tr_model.h5')
+opt = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, decay=0.01)
+model.compile(loss='binary_crossentropy', optimizer=opt, metrics=["accuracy"])
+model.fit(X, Y, batch_size = 5, epochs=1)
+
+
+def detect_triggerword(filename):
+    plt.subplot(2, 1, 1)
+
+    x = graph_spectrogram(filename)
+    x = x.swapaxes(0, 1)
+    x = np.expand_dims(x, axis=0)
+    predictions = model.predict(x)
+
+    plt.subplot(2, 1, 2)
+    plt.plot(predictions[0, :, 0])
+    plt.ylabel('probability')
+    plt.show()
+    return predictions
+
+
+chime_file = "audio_examples/chime.wav"
+
+
+def chime_on_activate(filename, predictions, threshold):
+    audio_clip = AudioSegment.from_wav(filename)
+    chime = AudioSegment.from_wav(chime_file)
+    Ty = predictions.shape[1]
+    # 遍历所有输出
+    consecutive_timesteps = 0
+    for i in range(Ty):
+        consecutive_timesteps += 1
+        # 在输出为1的概率大于阈值的第一次添加响声
+        if predictions[0, i, 0] > threshold and consecutive_timesteps > 75:
+            audio_clip = audio_clip.overlay(chime, position=((i / Ty) * audio_clip.duration_seconds) * 1000)
+            consecutive_timesteps = 0
+
+    audio_clip.export("chime_output.wav", format='wav')
