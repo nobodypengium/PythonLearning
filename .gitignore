@@ -46,3 +46,11 @@
 /partVch2/data/
 /partVch2_1/data/
 /partVch3/models/
+/partVch3_1/raw_data/
+/partVch3_1/XY_train/
+/partVch3_1/models/
+/partVch3_1/audio_examples/
+/partVch3_1/XY_dev/
+/partVch3_1/insert_test.wav
+/partVch3_1/chime_output.wav
+/partVch3_1/train.wav
