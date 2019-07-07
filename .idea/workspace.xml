@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59585607-6a0a-456e-859c-02b4bd1a8a84" name="Default Changelist" comment="">
+    <list default="true" id="59585607-6a0a-456e-859c-02b4bd1a8a84" name="Default Changelist" comment="Finish PartV ch2 1">
+      <change afterPath="$PROJECT_DIR$/partVch3/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/partVch3/network.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/partVch3/nmt_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/partVch3/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partVch2_1/main_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/partVch2_1/main_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partVch2_1/network_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/partVch2_1/network_v2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,28 +35,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partVch2_1/network_v2.py">
+        <entry file="file://$PROJECT_DIR$/partVch3/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="78" column="19" lean-forward="true" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/partVch2_1/main_v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="32" selection-start-line="32" selection-end-line="34" selection-end-column="90" />
+            <state relative-caret-position="266">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#0#88#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partVch2_1/main.py">
+        <entry file="file://$PROJECT_DIR$/partVch3/nmt_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="52" />
+            <state relative-caret-position="1102">
+              <caret line="151" column="40" selection-start-line="151" selection-start-column="40" selection-end-line="151" selection-end-column="40" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -62,10 +59,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/partVch2_1/test_v2.py">
+        <entry file="file://$PROJECT_DIR$/partVch3/test.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/partVch3/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="35" />
+            <state relative-caret-position="19">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -115,11 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/partIIch3/main.py" />
-        <option value="$PROJECT_DIR$/partIIch3/network.py" />
-        <option value="$PROJECT_DIR$/partIVch1/network.py" />
-        <option value="$PROJECT_DIR$/partIVch1/network_numpy.py" />
-        <option value="$PROJECT_DIR$/partIVch1/cnn_utils.py" />
         <option value="$PROJECT_DIR$/partIch2/lr_functions.py" />
         <option value="$PROJECT_DIR$/partIVch1/test.py" />
         <option value="$PROJECT_DIR$/partIVch1/main.py" />
@@ -159,13 +165,18 @@
         <option value="$PROJECT_DIR$/partVch2/main.py" />
         <option value="$PROJECT_DIR$/partVch2/netowrk.py" />
         <option value="$PROJECT_DIR$/partVch2/test.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/partVch2_1/test.py" />
         <option value="$PROJECT_DIR$/partVch2_1/network.py" />
         <option value="$PROJECT_DIR$/partVch2_1/main.py" />
         <option value="$PROJECT_DIR$/partVch2_1/test_v2.py" />
         <option value="$PROJECT_DIR$/partVch2_1/network_v2.py" />
         <option value="$PROJECT_DIR$/partVch2_1/main_v2.py" />
+        <option value="$PROJECT_DIR$/partVch3/nmt_utils.py" />
+        <option value="$PROJECT_DIR$/partVch3/models/test.py" />
+        <option value="$PROJECT_DIR$/partVch3/test.py" />
+        <option value="$PROJECT_DIR$/partVch3/network.py" />
+        <option value="$PROJECT_DIR$/partVch3/main.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -181,6 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,12 +203,7 @@
             <path>
               <item name="PythonLearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="PythonLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="partVch2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PythonLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PythonLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="partVch2_1" type="462c0819:PsiDirectoryNode" />
+              <item name="partVch3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PythonLearning" type="b2602c69:ProjectViewProjectNode" />
@@ -206,7 +213,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,6 +293,9 @@
       <module name="PythonLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/partVch2_1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -482,14 +491,8 @@
       <workItem from="1562324017774" duration="803000" />
       <workItem from="1562325042626" duration="9165000" />
       <workItem from="1562335349690" duration="2784000" />
-      <workItem from="1562374998544" duration="3000000" />
-    </task>
-    <task id="LOCAL-00018" summary="Update PartII ch1">
-      <created>1556074368175</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1556074368175</updated>
+      <workItem from="1562374998544" duration="3189000" />
+      <workItem from="1562495229596" duration="2636000" />
     </task>
     <task id="LOCAL-00019" summary="Update PartII ch2">
       <created>1556242392296</created>
@@ -827,11 +830,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562338123154</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Finish PartV ch2 1">
+      <created>1562378025916</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1562378025917</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392051000" />
+    <option name="totallyTimeSpent" value="394876000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -844,9 +854,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3626126" visible="true" weight="0.2558607" />
-      <window_info id="Structure" order="1" sideWeight="0.6373874" side_tool="true" visible="true" weight="0.2558607" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.36036035" visible="true" weight="0.25920963" />
+      <window_info id="Structure" order="1" sideWeight="0.6396396" side_tool="true" visible="true" weight="0.25920963" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.23174816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -860,14 +871,14 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50435364" side_tool="true" weight="0.37482318" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4996651" weight="0.3281471" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49564636" visible="true" weight="0.37199435" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49564636" visible="true" weight="0.37199435" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.6666667" visible="true" weight="0.23241796" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.6644144" visible="true" weight="0.23241796" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.49545455" weight="0.32953784" />
-      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.33333334" side_tool="true" visible="true" weight="0.23241796" />
+      <window_info anchor="right" x="0" y="0" width="337" height="637" id="Documentation" order="5" sideWeight="0.3355856" side_tool="true" visible="true" weight="0.23241796" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -897,7 +908,8 @@
     <MESSAGE value="Start PartV ch2" />
     <MESSAGE value="Finish PartV ch2&#10;Start PartV ch2 1" />
     <MESSAGE value="Update PartV ch2 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update PartV ch2 1" />
+    <MESSAGE value="Finish PartV ch2 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish PartV ch2 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1030,53 +1042,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/partIVch3/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partIVch3/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2451">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
-          <folding>
-            <element signature="e#0#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partIVch4_1/inception_blocks_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-993">
-          <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partIVch4_1/fr_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="192" selection-start-line="192" selection-end-line="192" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partIVch4_1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="32" column="46" lean-forward="true" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/partIVch4_1/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1342,13 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/partVch2/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1376,10 +1334,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partVch2_1/test_v2.py">
+    <entry file="file://$PROJECT_DIR$/partVch2_1/network_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="35" />
+        <state relative-caret-position="1482">
+          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1393,17 +1351,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partVch2_1/network_v2.py">
+    <entry file="file://$PROJECT_DIR$/partVch2_1/test_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="78" column="19" lean-forward="true" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        <state>
+          <caret selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/partVch2_1/main_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
+        <state relative-caret-position="413">
           <caret line="32" selection-start-line="32" selection-end-line="34" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch3/models/test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch3/nmt_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="151" column="40" selection-start-line="151" selection-start-column="40" selection-end-line="151" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch3/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch3/test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partVch3/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
         </state>
       </provider>
     </entry>
